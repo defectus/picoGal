@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+    
+    <head>
+        <title>picoGal</title>
+        <link href="http://twitter.github.com/bootstrap/assets/css/bootstrap.css"
+        rel="stylesheet">
+        <link href="http://twitter.github.com/bootstrap/assets/css/bootstrap-responsive.css"
+        rel="stylesheet">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+        <script src="./picoGal.js"></script>
+        <script src="./picasa.js"></script>
+        <script type="text/javascript">
+            $(document).ready(function() {
+                var $pictureBox = $('#gallery');
+                $.picasa.images('105463572380807308770', '5724143061180303905', function(images) {    
+                    $.each(images, function(i, image) {
+                        var $photoDiv = $('<div>', {
+                            'class': i === 0 ? 'active item' : 'item'
+                        }).append($('<img>', {
+                            src: image.url,
+                            style: 'width:600px;height:400px'
+                        }));
+                        $pictureBox.append($photoDiv);
+                    });
+
+                    $('#gallery').picoGal({
+                        thumbWidth: '160',
+                        thumbHeight: '120'
+                    }).picoGal('show');
+                });
+
+            });
+        </script>
+    </head>
+    
+    <body>
+        <div class="container">
+            <h1>picoGal</h1>
+            <ul>
+                <li>Sample Gallery</li>
+                <div id="gallery" /></div>
+                <li>Usage</li>
+                <li>Credits (go to me - obviously)</li>
+            </ul>
+            
+    </body>
+
+</html>
