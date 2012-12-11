@@ -1,5 +1,3 @@
-http://daringfireball.net/projects/markdown/basics
-
 picoGal
 =======
 
@@ -11,7 +9,6 @@ Smallest possible gallery for your website
 
 Usage
 -----
-
 The simplest possible way to create a gallery is to list your images in a tag and then refer to that tag is picoGal.
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
@@ -34,16 +31,16 @@ And that's it. Really. Give it a try!
 
 Reference
 ---------
-
-* Settings
+### Settings
 - effect [none|randomize|reveal]: display effect (how thumbnails are displayed)
 - thumbWidth: thumbnail width
 - thumbHeight: thumbnail height
 - height: image hight (the full size one)
 - width: image width (the full size one)
+- displayTitle: if true then title is displayed when mouse hover over the thumbnail
 - thumbTransform: function that returns thumbnail url based on full size image url (usefull with picasa)
 
-* Methods
+### Methods
 - init ('init', settings): takes settings structure and initializes gallery
 - build ('build'): build the gallery
 - show ('show'): shows the gallery (reveals it)
@@ -52,6 +49,5 @@ Reference
 
 Credits
 -------
-
 Go to me and my wife for having the crazy idea of settings up our website :-)
 Randomize array alghorithm found somewhere on stackoverflow, then forgotten and then reinvented myself.

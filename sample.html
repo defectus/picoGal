@@ -19,13 +19,14 @@
                             'class': i === 0 ? 'active item' : 'item'
                         }).append($('<img>', {
                             src: image.url,
-                            style: 'width:600px;height:400px'
+                            title: image.title
                         }));
                         $pictureBox.append($photoDiv);
                     });
 
                     $('#gallery').picoGal({
                         thumbWidth: '160',
+                        thumbHeight: '120',
                         thumbTransform: function(src){
                             var regexp = /\/[a-zA-Z0-9%_\-]+\.JPG$/i, retval = src.replace(regexp, '/w160') + src.match(regexp);
                             return retval; 

@@ -2,10 +2,12 @@
     var methods = {
         init: function(settings) {
             var images = this.find('img').map(function() {
-                    var $elem = $(this),
-                        src = $elem.attr('src');
-                    return src;
-                }).get();
+                return {
+                    src: $(this).attr('src'),
+                    title: $(this).attr('title'),
+                    alt: $(this).attr('alt')
+                };
+            }).get();
             this.data('images', images);
             this.data('settings', $.extend({
                 effect: 'reveal', // [none|randomize|reveal]
@@ -13,7 +15,10 @@
                 thumbHeight: 'auto',
                 height: 'auto',
                 width: 'auto',
-                thumbTransform: function(url){return url}
+                displayTitle: true,
+                thumbTransform: function(url) {
+                    return url
+                }
             }, settings));
             return this;
         },
@@ -60,9 +65,9 @@
             });
             $.each(images, function(i, v) {
                 var $img = $('<img>', {
-                    src: settings.thumbTransform(v),
-                    alt: '',
-                    title: '',
+                    src: settings.thumbTransform(v.src),
+                    alt: v.alt,
+                    title: settings.displayTitle ? v.title : '',
                     'data-fullsize': v,
                     css: {
                         position: 'relative',
@@ -91,7 +96,8 @@
     };
 
     function imgOnClick() {
-        var _this = this, $preview = $(document).find('body>#preview').size() > 0 ? $(document).find('body>#preview') : function() {
+        var _this = this,
+            $preview = $(document).find('body>#preview').size() > 0 ? $(document).find('body>#preview') : function() {
                 var $img = $('<img>', {
                     id: 'preview',
                     css: {
