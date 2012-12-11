@@ -26,10 +26,29 @@ Given this html you can do:
 
     $('div').picoGal({}).picoGal('show');
 
-And that's it. Really. Give it try!
+or (even simpler)
+    
+    $('div').picoGal('show');
+
+And that's it. Really. Give it a try!
 
 Reference
 ---------
+
+* Settings
+- effect [none|randomize|reveal]: display effect (how thumbnails are displayed)
+- thumbWidth: thumbnail width
+- thumbHeight: thumbnail height
+- height: image hight (the full size one)
+- width: image width (the full size one)
+- thumbTransform: function that returns thumbnail url based on full size image url (usefull with picasa)
+
+* Methods
+- init ('init', settings): takes settings structure and initializes gallery
+- build ('build'): build the gallery
+- show ('show'): shows the gallery (reveals it)
+- hide ('hide'): hides gallery, but the underlying dom is still there
+- destroy ('destroy'): clears out the dom so the gallery is completely removed
 
 Credits
 -------

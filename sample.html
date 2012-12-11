@@ -13,7 +13,7 @@
         <script type="text/javascript">
             $(document).ready(function() {
                 var $pictureBox = $('#gallery');
-                $.picasa.images('105463572380807308770', '5724143061180303905', function(images) {    
+                $.picasa.images('105463572380807308770', '5724143061180303905', function(images) {
                     $.each(images, function(i, image) {
                         var $photoDiv = $('<div>', {
                             'class': i === 0 ? 'active item' : 'item'
@@ -26,7 +26,10 @@
 
                     $('#gallery').picoGal({
                         thumbWidth: '160',
-                        thumbHeight: '120'
+                        thumbTransform: function(src){
+                            var regexp = /\/[a-zA-Z0-9%_\-]+\.JPG$/i, retval = src.replace(regexp, '/w160') + src.match(regexp);
+                            return retval; 
+                        }                        
                     }).picoGal('show');
                 });
 
@@ -37,11 +40,7 @@
     <body>
         <div class="container">
             <h1>picoGal sample page</h1>
-            <ul>
-                <li>Sample Gallery</li>
-                <div id="gallery" /></div>
-            </ul>
-            
+            <div id="gallery" /></div>
     </body>
 
 </html>
