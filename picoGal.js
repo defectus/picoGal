@@ -85,16 +85,25 @@
                         'border-radius': '4px',
                         cursor: 'pointer'
                     }
-                }).on('click', imgOnClick), 
-                $title=$('<div>',{
+                }).on('click', imgOnClick),
+                    $title = $('<div>', {
                         text: v.title,
                         css: {}
                     });
-                $container.append(function(){
-                    if(v.title) {
-                        return $('<div>',{css:{float:'left'}}).append($img, $title);
-                    } else {
-                        return $('<div>',{css:{float:'left'}}).append($img);
+                $container.append(function() {
+                    if (v.title) {
+                        return $('<div>', {
+                            css: {
+                                'float': 'left'
+                            }
+                        }).append($img, $title);
+                    }
+                    else {
+                        return $('<div>', {
+                            css: {
+                                'float': 'left'
+                            }
+                        }).append($img);
                     }
                 });
             });
