@@ -68,7 +68,7 @@
                     src: settings.thumbTransform(v.src),
                     alt: v.alt,
                     title: settings.displayTitle ? v.title : '',
-                    'data-fullsize': v,
+                    'data-fullsize': v.src,
                     css: {
                         position: 'relative',
                         border: 0,
@@ -85,8 +85,18 @@
                         'border-radius': '4px',
                         cursor: 'pointer'
                     }
-                }).on('click', imgOnClick);
-                $container.append($img);
+                }).on('click', imgOnClick), 
+                $title=$('<div>',{
+                        text: v.title,
+                        css: {}
+                    });
+                $container.append(function(){
+                    if(v.title) {
+                        return $('<div>',{css:{float:'left'}}).append($img, $title);
+                    } else {
+                        return $('<div>',{css:{float:'left'}}).append($img);
+                    }
+                });
             });
             _this.append($container);
         },
@@ -102,8 +112,8 @@
                     id: 'preview',
                     css: {
                         display: 'none',
-                        height: $(_this).parent().parent().data('settings').height,
-                        width: $(_this).parent().parent().data('settings').width,
+                        height: $(_this).parent().parent().parent().data('settings').height,
+                        width: $(_this).parent().parent().parent().data('settings').width,
                         'z-index': 999999999,
                         'position': 'absolute',
                         '-moz-box-shadow': '0 0 4px 1px #ddf',
