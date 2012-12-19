@@ -83,25 +83,32 @@
                         'box-shadow': '0 0 4px 1px #DDF',
                         '-moz-border-radius': '4px',
                         'border-radius': '4px',
-                        cursor: 'pointer'
+                        cursor: 'pointer',
+                        overflow:'hidden'
                     }
                 }).on('click', imgOnClick),
                     $title = $('<div>', {
                         text: v.title,
-                        css: {}
+                        title: v.title,
+                        css: {
+                            overflow:'hidden',
+                            height: '15px'
+                        }
                     });
                 $container.append(function() {
                     if (v.title) {
                         return $('<div>', {
                             css: {
-                                'float': 'left'
+                                'float': 'left',
+                                width: Number(settings.thumbWidth) + 10
                             }
                         }).append($img, $title);
                     }
                     else {
                         return $('<div>', {
                             css: {
-                                'float': 'left'
+                                'float': 'left',
+                                width: Number(settings.thumbWidth) + 10
                             }
                         }).append($img);
                     }
